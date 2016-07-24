@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'top/index'
+  devise_for :users
 
   resources :contacts, only: [:index, :new, :create] do
     collection do
