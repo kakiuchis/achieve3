@@ -1,7 +1,4 @@
 ja:
-    unauthorized:
-      manage:
-         all: アクセス権限がありません
   admin:
     home:
       name: "ホーム"

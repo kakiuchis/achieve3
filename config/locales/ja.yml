@@ -1,5 +1,8 @@
 ---
 ja:
+  unauthorized:
+      manage:
+        all: アクセス権限がありません
   attributes:
     title: タイトル
     name: 名前
