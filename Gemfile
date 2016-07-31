@@ -55,3 +55,7 @@ gem 'faker'
 group :development do
   gem 'letter_opener'
 end
+
+gem 'therubyracer', platforms: :ruby
+gem 'rails_admin'
+gem 'cancan'
