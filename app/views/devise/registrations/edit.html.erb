@@ -10,34 +10,38 @@
         <div class="field">
           <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
         </div>
+      <% end %>
       
         <!-- 名前入力用のフィールドを追加 -->
         <div class="field">
           <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
         </div>
-      <% end %>
-    
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+      <% if @user.provider != 'facebook' && @user.provider != 'twitter' %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+        
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "新パスワード（パスワード変更時のみ入力）" %>
+        </div>
       
-      <div class="field">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "新パスワード（パスワード変更時のみ入力）" %>
-      </div>
-    
-      <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新パスワード（確認）" %>
-      </div>
-    
-      <div class="field">
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %>
-      </div>
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新パスワード（確認）" %>
+        </div>
+      
+        <% if false %>
+          <div><%= f.label :current_password %> <i><%= t(".current_password_warning") %></i><br />
+          <%= f.password_field :current_password %></div>
+        <% end %>
+        
+      <% end %>
       
       <div class="field">
         <%= profile_img(@user) if profile_img(@user) %>
         <%= f.file_field :avatar %>
         <%= f.hidden_field :avatar_cache %>
       </div>
+      
     
       <div class="actions">
         <%= f.submit "変更する", class: "btn btn-primary btn-block" %>
