@@ -7,11 +7,15 @@
     <div class="row">
       <p><%= blog.user.name %></p>
       <p class="profile_img"><%= profile_img(blog.user) %></p>
+      <%= link_to blog_path(blog) do %>
       <h4><strong><%= blog.title %></strong></h4>
+      <% end %>
       <p><%= blog.content %></p>
       <%= link_to "詳細", blog_path(blog.id), class: 'btn btn-default btn-sm btn-info' %>
-      <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
-      <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+      <% if current_user.id == blog.user_id %>
+        <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
+        <%= link_to "削除", blog_path(blog.id), method: :delete, html: { id: nil, class: 'delete_comment' }, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+      <% end %>
     </div>
     <% end %>
   </div>

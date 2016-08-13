@@ -1,0 +1,25 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% unless comment.id.nil? %>
+      <li id ="comment_<%= comment.id %>">
+        <p class="left"><%= comment.user.name %>さんがコメントしました。</p>
+        <p class="left"><%= comment.content %></p>
+        <% if current_user.id == comment.user.id %>
+          <p class="right">
+            <!--
+            <%= link_to '', edit_blog_comment_path(blog, comment), class: "fa fa-pencil-square-o fa-lg" %>
+            -->
+            <%= link_to '', [comment.blog, comment], class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: '本当に削除していいですか？',:remote => true } %>
+          </p>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<script>
+$(function() {
+ $('a[data-method="delete"]').on('ajax:success', function(xhr,data,status) {
+    $('#comment_'+data.comment.id).fadeOut();
+ });
+});
+</script>

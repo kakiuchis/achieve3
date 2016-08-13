@@ -1,13 +1,24 @@
-<div class="container">
-  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-    <h1>ブログ詳細</h1>
-    <div class="row">
-      <p><%= @blog.user.name %></p>
-      <p><%= profile_img(@blog.user) %></p>
-      <h4><strong><%= @blog.title %></strong></h4>
-      <p><%= @blog.content %></p>
-      <%= link_to "編集", edit_blog_path(@blog.id), class: 'btn btn-default btn-sm btn-success' %>
-      <%= link_to "削除", blog_path(@blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+<p id="notice"><%= notice %></p>
+<div class="child row">
+  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="blog-text">
+      <p class="left"><strong>タイトル</strong></p>
+      <p class="left"><%= @blog.title %></p>
+      <p class="left"><strong>内容</strong></p>
+      <p class="left"><%= @blog.content %></p>
+      <p class="right">
+        <strong>作成時間:</strong>
+        <%= @blog.created_at.strftime("%y/%m/%d %p %l:%M") %>
+      </p>
     </div>
+    <p>コメント一覧</p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+    <% if current_user.id == @blog.user_id %>
+      <%= link_to '編集', edit_blog_path(@blog), class: 'btn btn-default' %> |
+    <% end %>
+    <%= link_to '戻る', blogs_path, class: 'btn btn-default' %>
   </div>
 </div>

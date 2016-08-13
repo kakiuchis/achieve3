@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
+    resources :comments
     collection do
       post :confirm
     end
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
   
   root 'top#index'
   
-  post 'blogs/new', to: 'blogs#new'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

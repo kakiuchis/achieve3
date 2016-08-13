@@ -26,6 +26,8 @@ class BlogsController < ApplicationController
     end
   end
   def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
   end
   def edit
     # @blog = Blog.find(params[:id])
