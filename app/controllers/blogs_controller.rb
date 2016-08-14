@@ -42,9 +42,16 @@ class BlogsController < ApplicationController
   end
   def destroy
     # @blog = Blog.find(params[:id])
-    @blog.destroy
-    redirect_to blogs_path, notice: "ブログを削除しました！"
+    if @blog.user.name != current_user.name
+      redirect_to controller: 'blogs', action: 'index'
+    else
+      @blog.destroy
+      redirect_to blogs_path, notice: "ブログを削除しました！"
+    end
   end
+  
+
+  
   private
     def blogs_params
       params.require(:blog).permit(:title, :content)

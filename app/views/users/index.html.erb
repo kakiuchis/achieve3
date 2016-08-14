@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>ユーザー一覧</h2>
+  <% @users.each do |user| %>
+      <div class="wrapper container-child col-md-2 col-sm-4 col-xs-6 ">
+        <p class="profile"><%= link_to profile_img(user), user_path(user.id) %></p>
+        <p><%= link_to user.name, user_path(user.id) %></p>
+        <% if current_user.id == user.id %>
+          <%= link_to "マイページ", edit_user_registration_path, class: 'btn btn-default btn-sm btn-success' %>
+        <% else %>
+          <%= render 'follow_form', user: user %>
+        <% end %>
+      </div>
+  <% end %>
+
+</div>
+<p><%= link_to '戻る', :back, class: 'btn btn-default' %></p>

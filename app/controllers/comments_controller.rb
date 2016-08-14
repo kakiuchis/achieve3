@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   # コメントを保存、投稿するためのアクションです。
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
@@ -22,8 +23,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     # @blog = @comment.blog
-    @comment.destroy
-    render :json => {:comment => @comment}
+    if @comment.user.name != current_user.name
+      redirect_to controller: 'blogs', action: 'index'
+    else
+      @comment.destroy
+      render :json => {:comment => @comment}
+    end
     # format.html { redirect_to blogs_path(@blog), notice: "ブログを削除しました！" }
     # format.json { render :show, status: :deleted, location: @comment }
     # format.js { render :index }

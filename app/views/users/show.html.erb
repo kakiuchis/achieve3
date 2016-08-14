@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="wrapper col-md-4 col-md-offset-4 col-sm-10">
+      <h2>ユーザー詳細</h2>
+      
+      
+      <p><%= @user.name %></p>
+      <p class="profile"><%= profile_img(@user) %></p></br>
+      <% if current_user.id == @user.id %>
+          <%= link_to "編集", edit_user_registration_path, class: 'btn btn-default' %>
+      <% else %>
+          <%= render 'follow_form', user: @user %>
+      <% end %>
+      </br>
+      <p><%= link_to '戻る', :back, class: 'btn btn-default' %></p>
+      
+    </div>
+  </div>
+  
+  <%= render 'follow' %>
+
+    
+  
+</div>
