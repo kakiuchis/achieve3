@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  
 
-  
+  resources :tasks
   resources :relationships, only: [:create, :destroy]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -23,7 +22,10 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :tasks
+  end
+  
   
   root 'top#index'
   

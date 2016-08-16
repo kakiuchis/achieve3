@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+      <p>
+        <strong>User:</strong>
+        <%= @task.user.name %>
+      </p>
+      
+      <p>
+        <strong>Title:</strong>
+        <%= @task.title %>
+      </p>
+      
+      <p>
+        <strong>Content:</strong>
+        <%= @task.content %>
+      </p>
+      
+      <p>
+        <strong>Deadline:</strong>
+        <%= @task.deadline %>
+      </p>
+      
+      <p>
+        <strong>Charge:</strong>
+        <%= @task.charge.name %>
+      </p>
+      
+      <p>
+        <strong>Done:</strong>
+        <%= done_display_name(@task.done) %>
+      </p>
+      
+      <p>
+        <strong>Status:</strong>
+        <%= status_display_name(@task.status) %>
+      </p>
+      
+      <%= link_to 'Edit', edit_user_task_path(@task.user, @task), class: "btn btn-default" %> |
+      <%= link_to 'Back', user_tasks_path(@task.user), class: "btn btn-default" %>
+    </div>
+</div>
