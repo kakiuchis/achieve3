@@ -1,5 +1,9 @@
+<p id="notice"><%= notice %></p>
 <div class="container">
-  <%= link_to '依頼一覧に戻る', user_submit_requests_path %>
+  <h1>依頼されている一覧</h1>
+  <%= link_to "タスク一覧", user_tasks_path(current_user.id), class: 'btn btn-default' %> | 
+  <%= link_to '新規依頼', new_user_submit_request_path, class: 'btn btn-default' %> | 
+  <%= link_to '依頼している一覧', user_submit_requests_path, class: 'btn btn-default' %>
   <div class="inbox_list_<%= current_user.id %>" id="inbox_list_<%= current_user.id %>" >
     <%= render 'submit_requests_list', submit_requests: @submit_requests %>
   </div>

@@ -1,18 +1,25 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user
+  before_action :correct_user, except: [:show]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where(user_id: params[:user_id]).where.not(done: true).order(updated_at: :desc)
+    @tasks = Task.where(user_id: params[:user_id]).where.not(status: 1).order(updated_at: :desc)
     @user = User.find(params[:user_id])
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @user = User.find(params[:user_id])
+    # @submit_request = SubmitRequest.where(task_id: params[:id])
+    # @charger = User.find(params[:charge_id])
+    # @id = @task.charge_id
+    @charger = User.find(@task.charge_id)
+    # @charger = User.where(charge_id: params[:user_id])
+    redirect_to(user_tasks_path(current_user)) unless current_user == @charger || current_user == @user
   end
 
   # GET /tasks/new

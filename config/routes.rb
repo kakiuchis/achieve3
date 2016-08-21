@@ -24,6 +24,13 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show] do
     resources :tasks
+    resources :submit_requests , shallow: true do
+      get 'approve'
+      get 'unapprove'
+      collection do
+        get 'inbox'
+      end
+    end
   end
   
   

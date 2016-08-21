@@ -24,18 +24,19 @@
       <%= f.text_area :content, class: 'form-control', placeholder: "内容" %>
     </div>
     <div class="field">
-      <%= f.label :deadline %><br>
+      <%= f.label :締め切り %><br>
       <%= f.datetime_select :deadline %>
     </div>
     <div class="field">
       <%= f.hidden_field :charge_id %>
     </div>
     <div class="field">
-      <%= f.label :done %><br>
+      <%= f.label :完了したらチェック %><br>
       <%= f.check_box :done %>
     </div>
     <div class="field">
-      <%= f.select :status, [["未着手", "0"], ["対応中", "1"]] %>
+      <!-- <%= f.select :status, [["未着手", "0"], ["対応中", "1"]] %> -->
+      <%= f.hidden_field :status %>
     </div>
     <div class="actions">
       <%= f.submit '登録', class: 'btn btn-primary btn-block' %>

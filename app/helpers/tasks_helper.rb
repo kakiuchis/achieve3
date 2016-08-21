@@ -5,6 +5,8 @@ module TasksHelper
             '未着手'
           when 1
             '対応中'
+          else
+            '???????'
         end
     end
 
