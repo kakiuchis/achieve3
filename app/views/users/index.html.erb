@@ -8,6 +8,7 @@
           <%= link_to "マイページ", edit_user_registration_path, class: 'btn btn-default btn-sm btn-success' %>
         <% else %>
           <%= render 'follow_form', user: user %>
+          <%= render 'user', user: user %>
         <% end %>
       </div>
   <% end %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
   resources :tasks
   resources :relationships, only: [:create, :destroy]
 
@@ -31,6 +33,10 @@ Rails.application.routes.draw do
         get 'inbox'
       end
     end
+  end
+  
+  resources :conversations do
+    resources :messages
   end
   
   

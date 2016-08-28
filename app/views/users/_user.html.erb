@@ -1,0 +1,5 @@
+<% if user.id != current_user.id %>
+    <div class="item">
+      <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+    </div>
+<% end %>

@@ -75,4 +75,6 @@ gem 'rmagick'
 
 gem 'featherlight'
 
+gem 'pusher'
+
 
