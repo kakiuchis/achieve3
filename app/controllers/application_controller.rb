@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :current_notifications
 
   def current_notifications
-    @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
+    # @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
   end
   
   
