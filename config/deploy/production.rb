@@ -60,5 +60,5 @@
 #     # password: 'please use keys'
 #   }
 
-server '52.198.95.70', user: 'app', roles: %w{app db web}
-set :ssh_options, keys: '/c/users/kakiuchi/desktop/.ssh/id_rsa'
+server '52.197.178.144', user: 'app', roles: %w{app db web}
+set :ssh_options, keys: '/home/ubuntu/.ssh/id_rsa'
