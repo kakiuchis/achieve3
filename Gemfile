@@ -77,4 +77,6 @@ gem 'featherlight'
 
 gem 'pusher'
 
+gem 'fog'
+
 
