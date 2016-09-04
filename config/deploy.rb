@@ -38,7 +38,7 @@
 lock '3.6.0'
 
 # デプロイするアプリケーション名
-set :application, 'achieve'
+set :application, 'achieve3'
 
 # cloneするgitのレポジトリ
 set :repo_url, 'git@github.com:kakiuchis/achieve.git'
